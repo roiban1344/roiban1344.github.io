@@ -19,7 +19,7 @@
 # in the templates via {{ site.myvariable }}.
 
 title: Roiban1344's Logbook
-email: 81000453+roiban1344@users.noreply.github.com
+#email: 81000453+roiban1344@users.noreply.github.com
 description: >- # this means to ignore newlines until "baseurl:"
   roiban1344の作業記録
 domain: roiban1344.github.io
