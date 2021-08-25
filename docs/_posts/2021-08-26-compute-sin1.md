@@ -35,7 +35,7 @@ $$
 \sin x = \sum_{k=0}^n \frac{(-1)^kx^{2k+1}}{(2k+1)!} + \frac{(-1)^{n+1}\sin c\, x^{2n+3}}{(2n+3)!}
 $$
 
-を満たす $$c\in (0,x)$$ が存在して $$|\sin x|\leq 0$$ だから，
+を満たす $$c\in (0,x)$$ が存在して $$\|\sin x\|\leq 0$$ だから，
 
 $$
 \left|\sin x-\sum_{k=0}^n \frac{(-1)^kx^{2k+1}}{(2k+1)!}\right| \leq \frac{x^{2n+3}}{(2n+3)!}
