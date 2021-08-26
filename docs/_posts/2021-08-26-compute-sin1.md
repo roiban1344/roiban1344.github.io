@@ -112,10 +112,12 @@ $$
 
 0に十分近い$$x$$で
 $$
-\sin x \in \left[a_{n-1}, a_{n-1}+\frac{x^n}{n!}\right],\ 
-\cos x \in \left[b_{n-1}, b_{n-1}+\frac{x^n}{n!}\right],\\
-\sin \frac{x}{2} \in \left[a'_{n-1}, a'_{n-1}+\frac{x^n}{2^nn!}\right],\ 
-\cos \frac{x}{2} \in \left[b'_{n-1}, b'_{n-1}+\frac{x^n}{2^nn!}\right],\\
+\begin{aligned}
+\sin x &\in \left[a_{n-1}, a_{n-1}+\frac{x^n}{n!}\right],&
+\cos x &\in \left[b_{n-1}, b_{n-1}+\frac{x^n}{n!}\right],\\
+\sin \frac{x}{2} &\in \left[a'_{n-1}, a'_{n-1}+\frac{x^n}{2^nn!}\right],&
+\cos \frac{x}{2} &\in \left[b'_{n-1}, b'_{n-1}+\frac{x^n}{2^nn!}\right]
+\end{aligned}
 $$
 
 の場合に後者の2倍角から計算したときの区間幅は
@@ -158,7 +160,7 @@ $$
 \in \left[
     3614090359.\ldots,
     3614090360.\ldots
-    \right]
+    \right].
 $$
 
 「精度は足りる」←嘘だった．
