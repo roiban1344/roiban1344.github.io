@@ -4,6 +4,8 @@ title: "第14日目 - binary exponentiation - シンタックスハイライト"
 date:   2021-08-29 22:50:00 +0900
 ---
 
+{% include use_mathjax.html %}
+
 ドンピシャなタイトルなので買ってしまった．
 
 > Rustでわかるメモリ管理
