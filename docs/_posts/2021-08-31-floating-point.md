@@ -8,7 +8,7 @@ date:   2021-08-31 22:15:00 +0900
 
 ## sin1は無理数か？
 
-[How to prove \[math\]\\sin\{1\}\[/math\] irrational \- Quora](https://www.quora.com/How-do-I-prove-sin-1-irrational-The-units-are-radians)
+[How to prove sin1 irrational \- Quora](https://www.quora.com/How-do-I-prove-sin-1-irrational-The-units-are-radians)
 
 それはもちろんそうだろうとは思ったが証明を思い付かなかった．
 調べるとQuoraに実に簡潔な証明があった．
@@ -20,7 +20,7 @@ date:   2021-08-31 22:15:00 +0900
 
 では超越数か？というともちろんそうで，[Lindeman-Weierstrassの定理](https://en.wikipedia.org/wiki/Lindemann%E2%80%93Weierstrass_theorem)から示される．
 
-$$\sin 1=\alpha$$ が代数的数であるとすると，$$e^{i}-2i\alpha e^0-e^{-i}=0$$. ところが，指数の $$i,0,-i$$ は独立な代数的数であり，Lindeman-Weierstrassの定理から$$a e^{i}+be^{0}+c{-1}e^{-i}=0$$を満たす代数的数の組 $$(a,b,c)$$ は $$(0,0,0)$$ に限る．これは矛盾．$$\square$$．
+$$\sin 1=\alpha$$ が代数的数であるとすると，$$e^{i}-2i\alpha e^0-e^{-i}=0$$. ところが，指数の $$i,0,-i$$ は独立な代数的数であり，Lindeman-Weierstrassの定理から$$a e^{i}+be^{0}+ce^{-i}=0$$を満たす代数的数の組 $$(a,b,c)$$ は $$(0,0,0)$$ に限る．これは矛盾．$$\square$$．
 
 [trigonometry \- Proof that cos\(1\) is transcendental? \- Mathematics Stack Exchange](https://math.stackexchange.com/questions/677900/proof-that-cos1-is-transcendental)
 
