@@ -3,7 +3,9 @@ title: "Jekyll から Astro へ移行した"
 date: 2026-01-02 14:30:00 +0900
 ---
 
-以下の内容は全部 Cursor が書いたものである。
+## 注意
+
+以下人間が再登場👤するまでの内容は全部 Cursor が書いたものである。
 
 ---
 
@@ -111,3 +113,69 @@ GitHub Actions で `npm run build` → `dist/` を GitHub Pages にデプロイ�
 - Astro の Content Collections は便利。スキーマ定義で frontmatter のバリデーションができる
 - 静的サイト生成のビルドが速い
 - TypeScript サポートが充実している
+
+---
+
+## 👤人間再登場
+
+Jekyll を Curosr によって最新版にアップデートしたあと、こんなに手軽ならフレームワークごと置き換えて、かつ GitHub Actions でビルド・デプロイされるようにするか、と思い立ち、指示すると瞬く間にこれが完成した。ついでに開発に DevContainers を使えるようになった。このままだと何も理解できていないので、Astro の基礎を学ぶ。
+
+公式サイト: [Astro](https://astro.build/)
+
+Next.js 類似のファイルベースルーティングが採用されている。公式のチュートリアルに記載のスニペット:
+
+```astro:src/pages/index.astro
+---
+// この "triple-dash code fences" を "component frontmatter" と呼ぶ。
+// ブラウザでは実行されない。
+// Next.js の getServerSideProps みたいなものらしい。
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// この変数が下の component template で読み取れるらしい。
+// Top-level await が使えるんだな。
+const posts = (await getCollection('blog')).sort(/* snip */);
+
+function formatDate(date: Date) {
+  // snip
+}
+
+function getPostUrl(id: string, date: Date) {
+  // snip
+}
+
+---
+
+<!-- ここは "component template". HTMLが拡張されている。-->
+<BaseLayout title="Home">
+  <h1 class="text-3xl font-normal mb-6">Posts</h1>
+  <ul class="list-none p-0 m-0">
+    {posts.map((post) => (
+      <li class="mb-8">
+        {/* snip */}
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
+```
+
+public ディレクトリ下のファイルは静的アセットとして公開される。`favicon.ico` が実際うちでも https://roiban1344.github.io で公開されている。
+
+astro.config.js で諸設定やプラグインを管理できる。最小構成:
+
+```mjs:astro.config.js
+import { defineConfig } from "astro/config";
+
+// https://astro.build/config
+export default defineConfig({});
+```
+
+tsconfig.json は Astro が提供しているものを拡張すれば良い。
+
+```json:tsconfig.json
+{
+  "extends": "astro/tsconfigs/strict",
+}
+```
+
+特に設定しなければ、`npm run build` で最終的な生成物が出力される。
