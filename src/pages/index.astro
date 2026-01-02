@@ -25,13 +25,13 @@ function getPostUrl(id: string, date: Date) {
 ---
 
 <BaseLayout title="Home">
-  <h1 class="page-heading">Posts</h1>
-  <ul class="post-list">
+  <h1 class="text-3xl font-normal mb-6">Posts</h1>
+  <ul class="list-none p-0 m-0">
     {posts.map((post) => (
-      <li>
-        <span class="post-meta">{formatDate(post.data.date)}</span>
-        <h2>
-          <a class="post-link" href={getPostUrl(post.id, post.data.date)}>
+      <li class="mb-8">
+        <span class="text-sm text-gray-500">{formatDate(post.data.date)}</span>
+        <h2 class="mt-1">
+          <a class="text-2xl font-normal text-blue-600 no-underline hover:underline" href={getPostUrl(post.id, post.data.date)}>
             {post.data.title}
           </a>
         </h2>
@@ -39,11 +39,3 @@ function getPostUrl(id: string, date: Date) {
     ))}
   </ul>
 </BaseLayout>
-
-<style>
-  .page-heading {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-  }
-</style>
-

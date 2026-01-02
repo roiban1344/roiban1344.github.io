@@ -1,6 +1,7 @@
 {
   "name": "Astro Blog",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+  "updateRemoteUserUID": true,
   "postCreateCommand": "npm install",
   "forwardPorts": [4321],
   "customizations": {
