@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('ja-JP', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+}
+
+function getPostUrl(id: string, date: Date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  // Remove date prefix from filename to get slug
+  const slug = id.replace(/^\d{4}-\d{2}-\d{2}-/, '');
+  return `/${year}/${month}/${day}/${slug}/`;
+}
+---
+
+<BaseLayout title="Home">
+  <h1 class="page-heading">Posts</h1>
+  <ul class="post-list">
+    {posts.map((post) => (
+      <li>
+        <span class="post-meta">{formatDate(post.data.date)}</span>
+        <h2>
+          <a class="post-link" href={getPostUrl(post.id, post.data.date)}>
+            {post.data.title}
+          </a>
+        </h2>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
+
+<style>
+  .page-heading {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+</style>
+

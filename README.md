@@ -4,51 +4,48 @@ https://roiban1344.github.io/
 
 ## 構成
 
-- **フレームワーク**: Jekyll
-- **テーマ**: Minima
+- **フレームワーク**: Astro
+- **数式描画**: KaTeX (remark-math + rehype-katex)
 - **ホスティング**: GitHub Pages
 
 ## ローカル開発
 
-### Docker / Podman を使う場合
+### Dev Container を使う場合（推奨）
 
-```bash
-cd docs
+VS Code で開くと Dev Container の使用を提案されます。そのまま開発環境が構築されます。
 
-# Podman の場合
-podman compose up
-
-# Docker の場合
-docker compose up
-```
-
-http://localhost:4000 でサイトを確認できます。ライブリロード対応で、ファイル変更が自動反映されます。
-
-### ネイティブ Ruby を使う場合
+### ネイティブ Node.js を使う場合
 
 #### 必要なもの
 
-- Ruby 3.1〜3.3（4.0 は非対応）
-- Bundler
+- Node.js 22+
+- npm
 
 #### セットアップ
 
 ```bash
-cd docs
-bundle install
+npm install
 ```
 
 #### 開発サーバーの起動
 
 ```bash
-bundle exec jekyll serve
+npm run dev
 ```
 
-http://localhost:4000 でサイトを確認できます。
+http://localhost:4321 でサイトを確認できます。
+
+#### ビルド
+
+```bash
+npm run build
+```
+
+`dist/` ディレクトリに静的ファイルが生成されます。
 
 ## ブログ記事の追加
 
-`docs/_posts/` ディレクトリに以下の形式でファイルを作成します：
+`src/content/blog/` ディレクトリに以下の形式でファイルを作成します：
 
 ```
 YYYY-MM-DD-title.md
@@ -58,10 +55,23 @@ YYYY-MM-DD-title.md
 
 ```markdown
 ---
-layout: post
 title: "記事タイトル"
 date: 2026-01-01 12:00:00 +0900
 ---
 
 記事の内容...
+```
+
+## 数式の使用
+
+KaTeX による数式描画がサポートされています。
+
+インライン数式: `$E = mc^2$`
+
+ブロック数式:
+
+```
+$$
+\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}
+$$
 ```

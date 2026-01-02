@@ -1,0 +1,257 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "roiban1344の作業記録" } = Astro.props;
+const siteTitle = "Roiban1344's Logbook";
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title={siteTitle} href="/rss.xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16/dist/katex.min.css" />
+    <title>{title} | {siteTitle}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrapper">
+        <a class="site-title" href="/">{siteTitle}</a>
+        <nav class="site-nav">
+          <a href="/">Home</a>
+          <a href="/about/">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <div class="wrapper">
+        <slot />
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrapper">
+        <p>&copy; {new Date().getFullYear()} roiban1344. Powered by <a href="https://astro.build">Astro</a>.</p>
+        <p>
+          <a href="https://github.com/roiban1344">GitHub</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --brand-color: #2a7ae2;
+    --text-color: #111;
+    --background-color: #fdfdfd;
+    --grey-color: #828282;
+    --grey-color-light: #e8e8e8;
+    --spacing-unit: 30px;
+    --content-width: 800px;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: var(--text-color);
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  a {
+    color: var(--brand-color);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+  }
+
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.375rem; }
+
+  p {
+    margin: 0 0 1em;
+  }
+
+  pre, code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size: 0.9375rem;
+    background-color: #f4f4f4;
+    border-radius: 3px;
+  }
+
+  code {
+    padding: 1px 5px;
+  }
+
+  pre {
+    padding: 8px 12px;
+    overflow-x: auto;
+  }
+
+  pre > code {
+    padding: 0;
+    background: none;
+  }
+
+  blockquote {
+    color: var(--grey-color);
+    border-left: 4px solid var(--grey-color-light);
+    padding-left: var(--spacing-unit);
+    margin: 0 0 1em;
+    font-style: italic;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .wrapper {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-unit);
+  }
+
+  /* Header */
+  .site-header {
+    border-top: 5px solid #424242;
+    border-bottom: 1px solid var(--grey-color-light);
+    min-height: 55.95px;
+    padding: 10px 0;
+  }
+
+  .site-header .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .site-title {
+    font-size: 1.625rem;
+    font-weight: 300;
+    letter-spacing: -1px;
+    color: #424242;
+  }
+
+  .site-title:hover {
+    text-decoration: none;
+  }
+
+  .site-nav a {
+    color: var(--text-color);
+    margin-left: 20px;
+  }
+
+  /* Main content */
+  .page-content {
+    flex: 1;
+    padding: var(--spacing-unit) 0;
+  }
+
+  /* Footer */
+  .site-footer {
+    border-top: 1px solid var(--grey-color-light);
+    padding: var(--spacing-unit) 0;
+    color: var(--grey-color);
+    font-size: 0.9375rem;
+  }
+
+  .site-footer .wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* Post list */
+  .post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .post-list li {
+    margin-bottom: var(--spacing-unit);
+  }
+
+  .post-meta {
+    font-size: 0.875rem;
+    color: var(--grey-color);
+  }
+
+  .post-link {
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  /* Post */
+  .post-header {
+    margin-bottom: var(--spacing-unit);
+  }
+
+  .post-title {
+    font-size: 2.625rem;
+    letter-spacing: -1px;
+    line-height: 1;
+    margin-top: 0;
+  }
+
+  .post-content {
+    margin-bottom: var(--spacing-unit);
+  }
+
+  /* KaTeX overrides */
+  .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .site-header .wrapper {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .site-nav {
+      margin-top: 10px;
+    }
+
+    .site-nav a:first-child {
+      margin-left: 0;
+    }
+
+    .site-footer .wrapper {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+</style>
+
